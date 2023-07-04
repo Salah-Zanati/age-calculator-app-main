@@ -1,0 +1,239 @@
+/* # Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+- Purple: hsl(259, 100%, 65%)
+- Light red: hsl(0, 100%, 67%)
+
+### Neutral
+
+- White: hsl(0, 0%, 100%)
+- Off white: hsl(0, 0%, 94%)
+- Light grey: hsl(0, 0%, 86%)
+- Smokey grey: hsl(0, 1%, 44%)
+- Off black: hsl(0, 0%, 8%)
+
+## Typography
+
+### Body Copy
+
+- Font size (inputs): 32px
+
+### Font
+
+- Family: [Poppins](https://fonts.google.com/specimen/Poppins)
+- Weights: 400i, 700, 800i */
+/*/> global roles */
+:root {
+  --purple: hsl(259, 100%, 65%);
+  --light-red: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 94%);
+  --light-grey: hsl(0, 0%, 86%);
+  --smokey-grey: hsl(0, 1%, 44%);
+  --off-black: hsl(0, 0%, 8%);
+}
+@font-face {
+  font-family: poppins-bold;
+  src: url("../assets/fonts/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: poppins-boldItalic;
+  src: url("../assets/fonts/Poppins-BoldItalic.ttf");
+}
+@font-face {
+  font-family: poppins-extrabold;
+  src: url("../assets/fonts/Poppins-ExtraBold.ttf");
+}
+@font-face {
+  font-family: poppins-extrabolditalic;
+  src: url("../assets/fonts/Poppins-ExtraBoldItalic.ttf");
+}
+@font-face {
+  font-family: poppins-italic;
+  src: url("../assets/fonts/Poppins-Italic.ttf");
+}
+@font-face {
+  font-family: poppins-regular;
+  src: url("../assets/fonts/Poppins-Regular.ttf");
+}
+input {
+  font-size: 32px;
+}
+button {
+  cursor: pointer;
+}
+*:focus {
+  outline: none;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--off-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+/*/< global roles */
+/*/> box div */
+.box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  padding: 40px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 150px;
+  min-height: 400px;
+  min-width: 50%;
+  font-size: 20px;
+}
+/*/> inputs div */
+.inputs {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+}
+.inputs label {
+  font-family: poppins-bold;
+  color: var(--smokey-grey);
+  text-transform: uppercase;
+  font-size: .6em;
+  letter-spacing: 1.8px;
+}
+.inputs label.error {
+  color: var(--light-red);
+  position: relative;
+}
+.inputs label.error::after {
+  content: "";
+  position: absolute;
+  color: var(--light-red);
+  font-family: poppins-regular;
+  font-size: 10px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.inputs label.empty-error::after {
+  content: "This field is required";
+}
+.inputs label.invalid-day-error::after {
+  content: "Must be a valid day";
+}
+.inputs label.invalid-month-error::after {
+  content: "Must be a valid month";
+}
+.inputs label.invalid-year-error::after {
+  content: "Must be in the post";
+}
+.inputs label.empty-error::after {
+  content: "This field is required";
+}
+.inputs label[for="dayInput"].invalid-date::after {
+  content: "Most be a valid date";
+}
+.inputs input {
+  width: 100px;
+  display: block;
+  padding: 10px;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: var(--off-black);
+  caret-color: var(--purple);
+}
+@media (max-width: 767px) {
+  .inputs input {
+    width: 80px;
+    font-size: 25px;
+  }
+}
+.inputs input.error {
+  border-color: var(--light-red);
+}
+.inputs input::placeholder {
+  color: var(--smokey-grey);
+  font-family: poppins-extrabold;
+  font-size: 20px;
+}
+.inputs input:focus {
+  border-color: var(--purple);
+}
+/*/< inputs div */
+/*/> calculation div */
+.calculation {
+  position: relative;
+}
+.calculation::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: var(--off-white);
+  top: 50%;
+  z-index: 1;
+}
+.calculation button {
+  float: right;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: var(--purple);
+  border-radius: 50%;
+  z-index: 2;
+  position: relative;
+  transition: .3s;
+}
+button:hover {
+  background-color: var(--off-black);
+}
+@media (max-width: 767px) {
+  .calculation button {
+    float: none;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 40px 0 30px;
+  }
+}
+.calculation button img {
+  width: 100%;
+  height: 100%;
+}
+/*/< calculation div */
+/*/> result div */
+.result li {
+  list-style: none;
+  font-size: 80px;
+  line-height: 90px;
+  font-family: poppins-extrabolditalic;
+  color: var(--off-black);
+}
+@media (max-width: 767px) {
+  .result li {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+.result li span {
+  color: var(--purple);
+}
+/*/< result div */
+/*/< box div */
